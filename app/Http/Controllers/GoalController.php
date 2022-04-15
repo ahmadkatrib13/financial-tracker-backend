@@ -42,8 +42,8 @@ class goalController extends Controller
         }
 
         $goal = (float)$profit_goal->profit_goal;
-
-        $percentage = 100* $total/$goal;
+        $percentage = 0;
+        if($goal!=0)                 $percentage = 100* $total/$goal;
 
       return [
             'status' => 201,
