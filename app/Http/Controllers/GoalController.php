@@ -17,7 +17,7 @@ class goalController extends Controller
         $expense    =   Transaction::whereRelation("category", "type", 'expense')->get()->sum('amount');
         $total      =   $income - $expense;
         $profit_goal=   Goal::first();
-        if(!isset($profit_goal)){
+        if(!isset($profit_goal) || $profit_goal==null){
             $profit_goal = new Goal;
             $profit_goal->profit_goal = 0;
             $profit_goal->save();
