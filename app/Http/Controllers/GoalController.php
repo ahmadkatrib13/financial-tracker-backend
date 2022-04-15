@@ -21,6 +21,24 @@ class goalController extends Controller
             $profit_goal = new Goal;
             $profit_goal->profit_goal = 0;
             $profit_goal->save();
+            $goal = (float)$profit_goal->profit_goal;
+            $percentage = 0;
+
+            return [
+                'status' => 201,
+                'message' => null,
+                'data' => [
+                    "id"=>$profit_goal->id,
+                    "total"=>$total,
+                    "percentage"=>$percentage>=100?100:($percentage<=0?0:$percentage),
+                    "profit_goal"=>$goal
+                ]
+            ];
+
+
+
+
+
         }
 
         $goal = (float)$profit_goal->profit_goal;
